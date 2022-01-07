@@ -19,11 +19,15 @@ $ npm run build
 $ npm run start
 ```
 
-Running the above commands results in
-
-**Application** running at `http://localhost:3000/ffmpeg/image?timestamp=5&url=http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4`
-### Or
-**Application** running at `http://localhost:3000/ffmpeg/image?timestamp=1&url=https://public-anios-dev.s3.ap-southeast-1.amazonaws.com/jungle_3s.mp4`
+### Note- Implemented two version of application
+#### 1- Screen capture by using node-fluent-ffmpeg package
+```
+http://localhost:3000/ffmpeg/image?timestamp=5&url=http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
+```
+#### 2- Screen capture without using any 3rd party package
+```
+http://localhost:3000/ffmpeg/image/v2?timestamp=2&url=https://public-anios-dev.s3.ap-southeast-1.amazonaws.com/jungle_3s.mp4
+```
 #### Changing timestamp parameter will grap at that timestamps screenshot.
 
 ## II. Run with docker
@@ -31,13 +35,18 @@ Running the above commands results in
 $ docker build -t pixcap .
 $ docker run -t -i -p 3000:3000 api-server
 ```
+```
+http://localhost:3000/ffmpeg/image?timestamp=5&url=http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
+```
+```
+http://localhost:3000/ffmpeg/image/v2?timestamp=2&url=https://public-anios-dev.s3.ap-southeast-1.amazonaws.com/jungle_3s.mp4
+```
 
 ### Directory Structure
 
 ```
 ├── Dockerfile
 ├── README.md
-├── Video
 ├── __tests
 │   └── app.test.ts
 ├── jest.config.js
